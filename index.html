@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EaglerLauncher</title>
+    <style>
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #1e1e1e; color: white; display: flex; height: 100vh; overflow: hidden; }
+        #sidebar { width: 250px; background: #2c2c2c; display: flex; flex-direction: column; border-right: 2px solid #3f3f3f; }
+        #header { padding: 20px; text-align: center; font-weight: bold; font-size: 1.2rem; background: #383838; }
+        .server-btn { padding: 15px; cursor: pointer; border: none; background: none; color: #ccc; text-align: left; transition: 0.2s; border-bottom: 1px solid #383838; }
+        .server-btn:hover { background: #3f3f3f; color: white; }
+        .server-btn.active { background: #4a90e2; color: white; }
+        #game-container { flex-grow: 1; position: relative; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <div id="header">🦅 EaglerLauncher</div>
+    <button class="server-btn active" onclick="loadServer('https://eaglercraft.com/mc/1.8.8/', this)">Official 1.8.8</button>
+    <button class="server-btn" onclick="loadServer('https://eaglercraft.q130.org/', this)">Mirror 1</button>
+    <button class="server-btn" onclick="loadServer('https://precisionclient.vercel.app/', this)">Precision Client</button>
+</div>
+
+<div id="game-container">
+    <iframe id="game-frame" src="https://eaglercraft.com/mc/1.8.8/"></iframe>
+</div>
+
+<script>
+    function loadServer(url, btn) {
+        document.getElementById('game-frame').src = url;
+        document.querySelectorAll('.server-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
